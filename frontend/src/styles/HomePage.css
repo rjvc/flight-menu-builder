@@ -1,0 +1,234 @@
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background-color: #f4f4f4;
+  color: #2c2c2c;
+  line-height: 1.5;
+  font-size: 16px;
+  padding: 16px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4c4c4c;
+}
+
+/* Homepage form styles */
+.homepage-form {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px 40px;
+  max-width: 900px;
+  margin: 10px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #b4b4b4;
+}
+
+/* Ensure input and select fields take full width */
+.homepage-form input[type="text"],
+.homepage-form select,
+.homepage-form .checkbox-group input {
+  width: 100%;
+  padding: 10px; /* Reduce padding */
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Reduce border radius */
+  font-size: 14px; /* Smaller font size */
+  background-color: #fafafa;
+  color: #222;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Center button styling */
+.centeredBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.marg_top {
+  margin-top: 20px;
+}
+
+/* Placeholder styling */
+.homepage-form input::placeholder,
+.homepage-form select option {
+  color: #222;
+  font-weight: 300;
+}
+
+.homepage-form input:focus,
+.homepage-form select:focus {
+  border-color: #0a58ca;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+}
+
+/* Styling the labels */
+.homepage-form label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Button styling */
+button {
+  padding: 15px 30px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 50%;
+  max-width: 900px;
+  margin-top: 10px;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #0a58ca;
+}
+
+/* Form group structure */
+.homepage-form .form-group {
+  display: flex;
+  flex-direction: row; /* Stack input and label vertically */
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.homepage-form .form-group label {
+  margin-bottom: 5px; /* Adjust space between label and input */
+}
+.sel-comp{
+  width: 100%;
+  max-width: 25%;
+}
+
+.homepage-form .form-group input,
+.homepage-form .form-group select {
+  width: 100%; /* Full width for inputs and selects */
+  margin-right: 0;
+}
+
+/* Ensure the form groups take up full width */
+.homepage-form .form-group select,
+.homepage-form .form-group input {
+  width: 100%; /* Ensure full width */
+}
+
+/* Checkbox and radio button group */
+.homepage-form .checkbox-group,
+.homepage-form .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.homepage-form .checkbox-group label,
+.homepage-form .radio-group label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #f4f7fc;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+
+.homepage-form .checkbox-group input[type="checkbox"],
+.homepage-form .radio-group input[type="radio"] {
+  display: none;
+}
+
+.homepage-form .checkbox-group input[type="checkbox"]:checked + label::before,
+.homepage-form .radio-group input[type="radio"]:checked + label::before {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+  content: '\2713'; /* Unicode checkmark */
+  text-align: center;
+  line-height: 200px;
+}
+
+/* Hover and focus effects */
+.homepage-form .checkbox-group label:hover,
+.homepage-form .radio-group label:hover {
+  border-color: #0d6efd;
+  background-color: #e9f3ff;
+}
+
+.homepage-form .checkbox-group input[type="checkbox"]:focus + label,
+.homepage-form .radio-group input[type="radio"]:focus + label {
+  outline: 3px solid rgba(13, 110, 253, 0.4);
+}
+
+.homepage-form .checkbox-group label::before,
+.homepage-form .radio-group label::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  line-height: 15px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .homepage-form {
+    padding: 20px;
+    margin: 20px;
+  }
+  .sel-comp {
+    width: 100%;
+    max-width: 90%;
+}
+
+  .homepage-form .form-group {
+    flex-direction: column; /* Stack input and label vertically */
+    width: 100%;
+  }
+
+  .homepage-form .form-group label,
+  .homepage-form .form-group input,
+  .homepage-form .form-group select {
+    width: 100%; /* Full width on smaller screens */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 25px;
+    margin-inline: 20px;
+    font-size: 16px;
+  }
+}
