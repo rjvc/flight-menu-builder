@@ -1,7 +1,9 @@
+//frontend/src/components/AirportInput.jsx
 import React, { useState, useRef } from "react";
 import Select from "react-select";
 import axios from "axios";
 import "../styles/HomePage.css"; // Ensure correct CSS for styling
+
 
 const AirportInput = ({ airport, setAirport }) => {
   const [options, setOptions] = useState([]);
@@ -16,6 +18,7 @@ const AirportInput = ({ airport, setAirport }) => {
 
     setLoading(true);
     try {
+      const X_RAPIDAPI_KEY = process.env.REACT_APP_X_RAPIDAPI_KEY;
       const options = {
         method: "GET",
         url: "https://airport-info.p.rapidapi.com/airport",
@@ -23,7 +26,7 @@ const AirportInput = ({ airport, setAirport }) => {
           iata: searchQuery,
         },
         headers: {
-          "x-rapidapi-key": "4efbde0ba3msh528ca52c43aed52p177378jsn78449f0d1aa1", // Access the API key from .env
+          "x-rapidapi-key": X_RAPIDAPI_KEY, // Access the API key from .env
           "x-rapidapi-host": "airport-info.p.rapidapi.com",
         },
       };
@@ -60,7 +63,7 @@ const AirportInput = ({ airport, setAirport }) => {
 
   return (
     <div className="form-group">
-      <label htmlFor="airport">Enter Airport IATA/ICAO Code - {process.env.X_RAPIDAPI_KEY }</label>
+      <label htmlFor="airport">Enter Airport IATA/ICAO Code</label>
       <Select
         id="airport" // This links to the label's `for` attribute
         options={options} // Pass the airport options here
