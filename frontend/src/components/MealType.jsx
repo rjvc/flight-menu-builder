@@ -12,8 +12,8 @@ const MealType = ({
   ];
 
   return (
-    <div className="form-group">
-      <label htmlFor="mealType">Do you want hot or cold meals?</label>
+    <div className="form-group roboto-regular">
+      <label>Do you want hot or cold meals?</label>
       <Select
         id="mealType"
         value={options.find(option => option.value === mealType)} // Match selected value

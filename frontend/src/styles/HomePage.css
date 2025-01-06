@@ -1,58 +1,93 @@
-/* General styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
-  font-family: 'Lora', serif;
-  background-color: #f4f4f4;
-  color: #2c2c2c;
-  line-height: 1.5;
-  font-size: 16px;
-  padding: 16px;
+a {
+  color:white;
+  text-decoration: none;
+}
+.navbar {
+  display:flex;  
+  background-color: #334257;
+  border-radius: 0px;
+  margin: 0px 0px 25px 0px;
+  width: 100%;
+  height: 50px;
+  max-height: 50px;
+  align-items: center;
+  justify-content:space-between;
+  padding: 5px;
+  position: sticky;
+  top:0;
+  box-shadow: 0px 0px 15px #11141a;
+  z-index: 99999;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Playfair Display', serif;
-  color: #1a1a1a;
-  margin-bottom: 10px;
+.pagetitle{
+  flex:content;
+  color:#cccecf;
+  font-size: 1rem; 
+  font-weight: bold;
+  height:fit-content;
+  width:100%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btnViewOrders {
+  width:100%;
+  height:30px;
+  padding-inline: 10px;
+  background-color: #75868f;
+  color: rgb(235, 235, 235);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+body {
+  background-color: #d3d3d3;
+  color: #070707;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.FooterComp{
+  width:100%;
+  margin-top: 60px;
+  height:20px
 }
 
 h1 {
   font-size: 3em;
   text-align: center;
-  margin-bottom: 20px;
-  color: #4c4c4c;
 }
 
-/* Homepage form styles */
 .homepage-form {
-  background: #fff;
+  background: #334257;
   border-radius: 15px;
   padding: 30px 40px;
-  max-width: 900px;
+  max-width: 700px;
   margin: 10px auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #b4b4b4;
+  box-shadow:  0 0 15px rgba(53, 69, 88, 0.5);
+  border: 1px solid #1d1d1d;
+  margin-bottom: 25px;
 }
 
-/* Ensure input and select fields take full width */
 .homepage-form input[type="text"],
 .homepage-form select,
 .homepage-form .checkbox-group input {
   width: 100%;
   padding: 10px; /* Reduce padding */
-  border: 1px solid #ddd;
+  border: 1px solid #555454;
   border-radius: 10px; /* Reduce border radius */
-  font-size: 14px; /* Smaller font size */
-  background-color: #fafafa;
-  color: #222;
+  font-size: 1em; /* Smaller font size */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Center button styling */
 .centeredBtn {
   display: flex;
   justify-content: center;
@@ -64,79 +99,111 @@ h1 {
   margin-top: 20px;
 }
 
-/* Placeholder styling */
 .homepage-form input::placeholder,
 .homepage-form select option {
-  color: #222;
+  color: #070707;
   font-weight: 300;
 }
 
 .homepage-form input:focus,
 .homepage-form select:focus {
-  border-color: #0a58ca;
-  box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+  border-color: #8ab1d1;
+  box-shadow: 0 0 10px rgba(21, 42, 70, 0.2);
 }
 
-/* Styling the labels */
 .homepage-form label {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 500;
-  color: #222;
+  color: #fff;
   margin-bottom: 10px;
   display: block;
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-/* Button styling */
-button {
-  padding: 15px 30px;
-  background-color: #0d6efd;
-  color: white;
+.submitButton {
+  padding: 14px 30px;
+  background-color: #9fc9af;
+  color: rgb(32, 47, 66);
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
   width: 50%;
-  max-width: 900px;
+  max-width: 700px;
   margin-top: 10px;
   margin: auto;
 }
 
-button:hover {
-  background-color: #0a58ca;
+.submitButton:hover {
+  background-color: #2e5c3b;
+  color: #fff;
+  box-shadow: rgba(50, 120, 85, 0.5) 0px 0px 5px;
 }
 
-/* Form group structure */
 .homepage-form .form-group {
   display: flex;
-  flex-direction: row; /* Stack input and label vertically */
+  flex-direction: row; 
   margin-bottom: 10px;
   align-items: center;
   justify-content: space-between;
 }
 
 .homepage-form .form-group label {
-  margin-bottom: 5px; /* Adjust space between label and input */
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-bottom: 5px;
 }
+
 .sel-comp{
   width: 100%;
-  max-width: 25%;
+  max-width: 30%;
+}
+
+.sel-comp select{
+  background-color: white;
+  color: #070707;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #e0ffe0;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+}
+
+.success-message h2 {
+  margin: 0 0 10px;
+}
+
+.success-message p {
+  margin: 0 0 20px;
+}
+
+.success-message button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.success-message button:hover {
+  background-color: #45a049;
 }
 
 .homepage-form .form-group input,
 .homepage-form .form-group select {
-  width: 100%; /* Full width for inputs and selects */
+  width: 100%;
   margin-right: 0;
 }
 
-/* Ensure the form groups take up full width */
-.homepage-form .form-group select,
-.homepage-form .form-group input {
-  width: 100%; /* Ensure full width */
-}
-
-/* Checkbox and radio button group */
 .homepage-form .checkbox-group,
 .homepage-form .radio-group {
   display: flex;
@@ -155,30 +222,41 @@ button:hover {
   padding: 10px 20px;
   background-color: #f4f7fc;
   transition: all 0.3s ease;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 500;
-  color: #222;
+  color: #070707;
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.sel-comp .react-select__control:focus {
+  border-color: rgb(0, 81, 128) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 45, 128, 0.25);
 }
 
 .homepage-form .checkbox-group input[type="checkbox"],
 .homepage-form .radio-group input[type="radio"] {
   display: none;
+  color: rgba(0,0,0,0)
 }
 
 .homepage-form .checkbox-group input[type="checkbox"]:checked + label::before,
 .homepage-form .radio-group input[type="radio"]:checked + label::before {
-  background-color: #0d6efd;
+  background-color: #3f5075;
   color: white;
-  border-color: #0d6efd;
-  content: '\2713'; /* Unicode checkmark */
+  border-color: #3f5b75;
+  content: ''; 
   text-align: center;
   line-height: 200px;
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-/* Hover and focus effects */
 .homepage-form .checkbox-group label:hover,
 .homepage-form .radio-group label:hover {
-  border-color: #0d6efd;
+  border-color: #6d82a8;
   background-color: #e9f3ff;
 }
 
@@ -201,8 +279,24 @@ button:hover {
   text-align: center;
   line-height: 15px;
 }
+.user-data-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 0px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  display: block;
+}
 
-/* Responsive adjustments */
+.user-data-input:focus {
+  border-color: #455b75;
+  outline: none;
+  background-color: #fff;
+}
+
 @media screen and (max-width: 768px) {
   .homepage-form {
     padding: 20px;
@@ -211,24 +305,108 @@ button:hover {
   .sel-comp {
     width: 100%;
     max-width: 90%;
-}
-
+    margin: auto;
+  }
+  .email-input {
+      width: 100%;
+      max-width: 82%;
+  }
   .homepage-form .form-group {
-    flex-direction: column; /* Stack input and label vertically */
+    flex-direction: row; 
     width: 100%;
+    flex-wrap: wrap;
   }
-
   .homepage-form .form-group label,
-  .homepage-form .form-group input,
-  .homepage-form .form-group select {
-    width: 100%; /* Full width on smaller screens */
-    margin-right: 0; /* Remove right margin */
+  .homepage-form .form-group input
+  {
+    font-family: "Roboto", serif;
+    font-weight: 300;
+    font-style: normal;
   }
 
-  button {
+  .submitButton {
     width: 100%;
     padding: 12px 25px;
-    margin-inline: 20px;
-    font-size: 16px;
+    margin-inline: 20pxC;
+    font-size: 1em;
+    font-family: "Roboto", serif;
+    font-weight: 300;
+    font-style: normal;
   }
+}
+
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.roboto-thin {
+  font-family: "Roboto", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  font-style: italic;
 }

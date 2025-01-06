@@ -1,52 +1,56 @@
 import React from "react";
+import Select from "react-select";
 
-const FoodType = ({
-  foodPreferences,
-  setFoodPreferences,
-}) => {
-   
-  const handleFoodPreferenceChange = (e) => {
-    const { name, value } = e.target;
-    setFoodPreferences((prev) => ({ ...prev, [name]: value }));
+const FoodType = ({ foodPreferences, setFoodPreferences }) => {
+  const handleFoodPreferenceChange = (selectedOption, actionMeta) => {
+    const { name } = actionMeta; // Get the name of the field
+    setFoodPreferences((prev) => ({ ...prev, [name]: selectedOption ? selectedOption.value : "" }));
   };
+
+  const optionsChoice1 = [
+    { value: "Chef suggestion (recommended)", label: "Chef suggestion (recommended)" },
+    { value: "Arabic", label: "Arabic" },
+    { value: "French", label: "French" },
+    { value: "Italian", label: "Italian" },
+  ];
+
+  const optionsChoice2 = [
+    { value: "Spicy", label: "Spicy" },
+    { value: "Salty", label: "Salty" },
+    { value: "Sweet", label: "Sweet" },
+    { value: "Vegan", label: "Vegan" },
+  ];
+
   return (
-  <>
-      <div >
+    <>
+      <div>
         <label>What type of food is appreciated?</label>
-        <div className="form-group">
+        <div className="form-group roboto-regular">
           <label htmlFor="foodChoice1">Choice #1</label>
-          <select 
-            className="slc2"
+          <Select
             id="foodChoice1"
             name="choice1"
-            value={foodPreferences.choice1}
+            options={optionsChoice1}
+            value={optionsChoice1.find((option) => option.value === foodPreferences.choice1) || null}
             onChange={handleFoodPreferenceChange}
-          >
-            <option value="">Select</option>
-            <option value="Chef suggestion (recommended)">
-              Chef suggestion (recommended)
-            </option>
-            <option value="Arabic">Arabic</option>
-            <option value="French">French</option>
-            <option value="Italian">Italian</option>
-          </select>
+            placeholder="Select"
+            className="sel-comp"
+            isClearable
+          />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="foodChoice2">Choice #2</label>
-          <select
-            className="slc2"
+          <Select
             id="foodChoice2"
             name="choice2"
-            value={foodPreferences.choice2}
+            options={optionsChoice2}
+            value={optionsChoice2.find((option) => option.value === foodPreferences.choice2) || null}
             onChange={handleFoodPreferenceChange}
-          >
-            <option value="">Select</option>
-            <option value="Spicy">Spicy</option>
-            <option value="Salty">Salty</option>
-            <option value="Sweey">Sweet</option>
-            <option value="Vegan">Vegan</option>
-          </select>
+            placeholder="Select"
+            className="sel-comp"
+            isClearable
+          />
         </div>
       </div>
     </>

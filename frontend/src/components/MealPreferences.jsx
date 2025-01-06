@@ -11,6 +11,11 @@ const MealPreferences = ({
     setSelectedMeals((prev) =>
       prev.includes(meal) ? prev.filter((item) => item !== meal) : [...prev, meal]
     );
+
+    // Reset breakfast type if Breakfast is deselected
+    if (meal === "Breakfast" && selectedMeals.includes(meal)) {
+      setBreakfastType("");
+    }
   };
 
   // Options for breakfast type
@@ -23,7 +28,7 @@ const MealPreferences = ({
   return (
     <>
       <label>For passengers, which meals do you need?</label>
-      <div className="form-group">
+      <div className="form-group roboto-regular">
         {["Breakfast", "Lunch", "Dinner", "Snack"].map((meal) => (
           <div className="checkbox-group" key={meal}>
             <input
@@ -43,8 +48,10 @@ const MealPreferences = ({
           <label htmlFor="breakfastType">What type of breakfast is appreciated?</label>
           <Select
             id="breakfastType"
-            value={breakfastOptions.find(option => option.value === breakfastType)} // Match selected value
-            onChange={(selectedOption) => setBreakfastType(selectedOption.value)} // Update state with selected value
+            value={breakfastOptions.find(option => option.value === breakfastType)}
+            onChange={(selectedOption) =>
+              setBreakfastType(selectedOption ? selectedOption.value : "")
+            }
             options={breakfastOptions}
             placeholder="Select"
             className="sel-comp"

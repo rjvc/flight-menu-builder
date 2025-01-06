@@ -9,9 +9,9 @@ const PassengerCount = ({ numPassengers, setNumPassengers, numCrew, setNumCrew }
   }));
 
   return (
-    <div className="form-group-wrapper">
+    <div className="form-group-wrapper roboto-regular">
       <div className="form-group">
-        <label htmlFor="numPassengers">How many passengers need meals?</label>
+        <label>How many passengers need meals?</label>
         <Select
           id="numPassengers"
           value={passengerOptions.find((option) => option.value === numPassengers)}
@@ -23,7 +23,7 @@ const PassengerCount = ({ numPassengers, setNumPassengers, numCrew, setNumCrew }
       </div>
 
       <div className="form-group">
-        <label htmlFor="numCrew">How many crew need meals?</label>
+        <label >How many crew need meals?</label>
         <Select
           id="numCrew"
           value={passengerOptions.find((option) => option.value === numCrew)}

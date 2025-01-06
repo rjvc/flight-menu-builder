@@ -1,27 +1,32 @@
 import React, { useState } from "react";
+import Select from "react-select";
 
 const DrinkPreferences = ({ onChange }) => {
-  const [drinkPreference, setDrinkPreference] = useState("");
+  const [drinkPreference, setDrinkPreference] = useState(null);
 
-  const handleDrinkChange = (e) => {
-    const { value } = e.target;
-    setDrinkPreference(value);
-    onChange(value); // Pass the selected value to the parent
+  const options = [
+    { value: "Alcoholic & soft", label: "Alcoholic & Soft drinks" },
+    { value: "Soft only", label: "Soft drinks only" },
+    { value: "No drinks", label: "No drinks" },
+  ];
+
+  const handleDrinkChange = (selectedOption) => {
+    setDrinkPreference(selectedOption);
+    onChange(selectedOption ? selectedOption.value : ""); // Pass the selected value to the parent
   };
 
   return (
-    <div className="form-group">
+    <div className="form-group roboto-regular">
       <label htmlFor="drinkPreference">What do you want for drinks?</label>
-      <select
+      <Select
         id="drinkPreference"
         value={drinkPreference}
         onChange={handleDrinkChange}
-      >
-        <option value="">Select</option>
-        <option value="Alcoholic & soft">Alcoholic & Soft drinks</option>
-        <option value="Soft only">Soft drinks only</option>
-        <option value="No drinks">No drinks</option>
-      </select>
+        options={options}
+        placeholder="Select"
+        className="sel-comp"
+        isClearable
+      />
     </div>
   );
 };

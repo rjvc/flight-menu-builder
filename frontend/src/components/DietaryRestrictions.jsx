@@ -1,26 +1,33 @@
-//components/DietaryRestrictions.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const DietaryRestrictions = ({ onChange }) => {
   const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
 
   const handleDietaryChange = (e) => {
     const { value } = e.target;
+
     setDietaryRestrictions((prev) => {
-      const updated = prev.includes(value)
-        ? prev.filter((diet) => diet !== value)
-        : [...prev, value];
-      onChange(updated); // Pass the updated array to the parent
-      return updated;
+      if (value === "None") {
+        return ["None"];
+      } else {
+        const updated = prev.includes(value)
+          ? prev.filter((diet) => diet !== value)
+          : [...prev.filter((diet) => diet !== "None"), value];
+        return updated;
+      }
     });
   };
 
+  useEffect(() => {
+    onChange(dietaryRestrictions);
+  }, [dietaryRestrictions, onChange]);
+
   return (
-    <div >
+    <div>
       <label>Is there any dietary restriction?</label>
-      <div className="form-group">
+      <div className="form-group roboto-regular">
         {["Halal", "Kosher", "Gluten free", "Vegan", "None"].map((diet) => (
-          <div  className="checkbox-group" key={diet}>
+          <div className="checkbox-group" key={diet}>
             <input
               type="checkbox"
               id={diet}
