@@ -1,22 +1,28 @@
 {
-    "name": "menu-builder",
-    "version": "1.0.0",
-    "private": true,
-    "workspaces": [
-        "frontend",
-        "backend"
-    ],
-    "scripts": {
-        "start:frontend": "npm --prefix frontend start",
-        "start:backend": "npm --prefix backend start",
-        "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-        "lint": "eslint '*/src/**/*.{js,jsx}'",
-        "format": "prettier --write ."
-    },
-    "devDependencies": {
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "concurrently": "^8.0.1",
-        "eslint": "^8.46.0",
-        "prettier": "^3.0.2"
-    }
+  "name": "menu-builder",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start:frontend": "npm --prefix frontend start",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "webpack --config ./backend/webpack.config.js",
+    "start:backend": "node ./backend/dist/bundle.js",
+    "dev:backend": "nodemon ./backend/src/server.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "build": "concurrently \"npm run build:frontend\" \"npm run build:backend\"",
+    "lint": "eslint '*/src/**/*.{js,jsx}'",
+    "format": "prettier --write .",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.0.1",
+    "eslint": "^8.46.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^3.0.2"
+  }
 }

@@ -24,7 +24,10 @@ const HomePage = () => {
   const [mealType, setMealType] = useState("");
   const [selectedMeals, setSelectedMeals] = useState([]);
   const [breakfastType, setBreakfastType] = useState("");
-  const [foodPreferences, setFoodPreferences] = useState({ choice1: "", choice2: "" });
+  const [foodPreferences, setFoodPreferences] = useState({
+    choice1: "",
+    choice2: "",
+  });
   const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
   const [drinkPreference, setDrinkPreference] = useState("");
   const [email, setEmail] = useState("");
@@ -37,7 +40,9 @@ const HomePage = () => {
   const isNameValid = name.trim() !== "";
 
   const isSection1Complete = airport && numPassengers && numCrew && mealType;
-  const isSection2Complete = selectedMeals.length > 0 && (!selectedMeals.includes("Breakfast") || breakfastType);
+  const isSection2Complete =
+    selectedMeals.length > 0 &&
+    (!selectedMeals.includes("Breakfast") || breakfastType);
   const isSection3Complete = foodPreferences.choice1;
   const isSection4Complete = dietaryRestrictions.length > 0;
   const isSection5Complete = drinkPreference;
@@ -177,20 +182,22 @@ const HomePage = () => {
                   />
                 </div>
                 <div className="form-group roboto-light">
-                  <label htmlFor="email">Enter your email</label>
-                  <input
-                    id="email"
-                    className="user-data-input roboto-light"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Your Email"
-                  />
+                    <label htmlFor="email">Enter your email</label>
+                    <input
+                      id="email"
+                      className="user-data-input roboto-light"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Your Email"
+                    />
                 </div>
                 {isEmailValid && isNameValid && (
                   <div className="centeredBtn roboto-light">
-                    <button className="submitButton" type="submit">Submit</button>
+                    <button className="submitButton" type="submit">
+                      Submit
+                    </button>
                   </div>
                 )}
               </div>

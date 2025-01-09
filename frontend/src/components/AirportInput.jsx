@@ -4,7 +4,6 @@ import Select from "react-select";
 import axios from "axios";
 import "../styles/HomePage.css"; // Ensure correct CSS for styling
 
-
 const AirportInput = ({ airport, setAirport }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +32,11 @@ const AirportInput = ({ airport, setAirport }) => {
 
       const response = await axios.request(options);
 
-      if (response.data && typeof response.data === "object" && response.data.name) {
+      if (
+        response.data &&
+        typeof response.data === "object" &&
+        response.data.name
+      ) {
         const formattedOption = {
           value: response.data.iata || response.data.icao,
           label: `(${response.data.iata || response.data.icao}) ${response.data.name} `,
@@ -63,7 +66,7 @@ const AirportInput = ({ airport, setAirport }) => {
 
   return (
     <div className="form-group roboto-regular">
-      <label >Enter Airport IATA/ICAO Code</label>
+      <label>Enter Airport IATA/ICAO Code</label>
       <Select
         id="airport" // This links to the label's `for` attribute
         options={options} // Pass the airport options here

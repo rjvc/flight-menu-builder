@@ -6,15 +6,19 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const MealData = require('./models/mealDataModel');
-
+const result = require('dotenv').config()
+if (result.error) {
+  throw result.error
+}
+console.log(result.parsed)
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb+srv://menubuilder:Menu100Acesso.@cluster0.7etwj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch((err) => console.log('Error connecting to MongoDB:', err));
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch((err) => console.log('Error connecting to MongoDB:', err));
 
 // Middleware to parse JSON request bodies
 app.use(express.json());

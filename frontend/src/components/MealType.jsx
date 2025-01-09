@@ -1,14 +1,11 @@
 import React from "react";
 import Select from "react-select";
 
-const MealType = ({
-  mealType,
-  setMealType
-}) => {
+const MealType = ({ mealType, setMealType }) => {
   const options = [
     { value: "hot", label: "Hot" },
     { value: "cold", label: "Cold" },
-    { value: "both", label: "Both" }
+    { value: "both", label: "Both" },
   ];
 
   return (
@@ -16,7 +13,7 @@ const MealType = ({
       <label>Do you want hot or cold meals?</label>
       <Select
         id="mealType"
-        value={options.find(option => option.value === mealType)} // Match selected value
+        value={options.find((option) => option.value === mealType)} // Match selected value
         onChange={(selectedOption) => setMealType(selectedOption.value)} // Update state with the selected value
         options={options}
         placeholder="Select"

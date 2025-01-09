@@ -4,11 +4,17 @@ import Select from "react-select";
 const FoodType = ({ foodPreferences, setFoodPreferences }) => {
   const handleFoodPreferenceChange = (selectedOption, actionMeta) => {
     const { name } = actionMeta; // Get the name of the field
-    setFoodPreferences((prev) => ({ ...prev, [name]: selectedOption ? selectedOption.value : "" }));
+    setFoodPreferences((prev) => ({
+      ...prev,
+      [name]: selectedOption ? selectedOption.value : "",
+    }));
   };
 
   const optionsChoice1 = [
-    { value: "Chef suggestion (recommended)", label: "Chef suggestion (recommended)" },
+    {
+      value: "Chef suggestion (recommended)",
+      label: "Chef suggestion (recommended)",
+    },
     { value: "Arabic", label: "Arabic" },
     { value: "French", label: "French" },
     { value: "Italian", label: "Italian" },
@@ -31,7 +37,11 @@ const FoodType = ({ foodPreferences, setFoodPreferences }) => {
             id="foodChoice1"
             name="choice1"
             options={optionsChoice1}
-            value={optionsChoice1.find((option) => option.value === foodPreferences.choice1) || null}
+            value={
+              optionsChoice1.find(
+                (option) => option.value === foodPreferences.choice1,
+              ) || null
+            }
             onChange={handleFoodPreferenceChange}
             placeholder="Select"
             className="sel-comp"
@@ -45,7 +55,11 @@ const FoodType = ({ foodPreferences, setFoodPreferences }) => {
             id="foodChoice2"
             name="choice2"
             options={optionsChoice2}
-            value={optionsChoice2.find((option) => option.value === foodPreferences.choice2) || null}
+            value={
+              optionsChoice2.find(
+                (option) => option.value === foodPreferences.choice2,
+              ) || null
+            }
             onChange={handleFoodPreferenceChange}
             placeholder="Select"
             className="sel-comp"

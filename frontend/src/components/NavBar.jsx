@@ -7,11 +7,14 @@ const NavBar = () => {
         <a href="http://localhost:3000/">light Meal Planner</a>
       </div>
       <div>
-        <button style={{ 'display':'none'}} className="btnViewOrders roboto-regular">
+        <button
+          style={{ display: "none" }}
+          className="btnViewOrders roboto-regular"
+        >
           Orders
         </button>
       </div>
-    </div> 
+    </div>
   );
 };
 export default NavBar;

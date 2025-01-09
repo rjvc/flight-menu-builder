@@ -9,7 +9,9 @@ const MealPreferences = ({
 }) => {
   const handleMealChange = (meal) => {
     setSelectedMeals((prev) =>
-      prev.includes(meal) ? prev.filter((item) => item !== meal) : [...prev, meal]
+      prev.includes(meal)
+        ? prev.filter((item) => item !== meal)
+        : [...prev, meal],
     );
 
     // Reset breakfast type if Breakfast is deselected
@@ -45,10 +47,14 @@ const MealPreferences = ({
 
       {selectedMeals.includes("Breakfast") && (
         <div className="form-group marg_top">
-          <label htmlFor="breakfastType">What type of breakfast is appreciated?</label>
+          <label htmlFor="breakfastType">
+            What type of breakfast is appreciated?
+          </label>
           <Select
             id="breakfastType"
-            value={breakfastOptions.find(option => option.value === breakfastType)}
+            value={breakfastOptions.find(
+              (option) => option.value === breakfastType,
+            )}
             onChange={(selectedOption) =>
               setBreakfastType(selectedOption ? selectedOption.value : "")
             }

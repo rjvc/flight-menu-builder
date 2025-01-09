@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const mealDataSchema = new mongoose.Schema({
   name: String,
@@ -17,5 +17,5 @@ const mealDataSchema = new mongoose.Schema({
   ip: String,
 });
 
-const MealData = mongoose.model('MealData', mealDataSchema);
+const MealData = mongoose.model("MealData", mealDataSchema);
 module.exports = MealData;
