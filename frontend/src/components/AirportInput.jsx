@@ -2,7 +2,6 @@
 import React, { useState, useRef } from "react";
 import Select from "react-select";
 import axios from "axios";
-//import "../styles/HomePage.css"; // Ensure correct CSS for styling
 import "../output.css";
 
 const AirportInput = ({ airport, setAirport }) => {
