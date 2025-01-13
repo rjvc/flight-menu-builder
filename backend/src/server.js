@@ -43,7 +43,7 @@ pool.connect((err, client, release) => {
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000', // Allow requests from React's frontend
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
 }));
 
 // Log incoming requests
