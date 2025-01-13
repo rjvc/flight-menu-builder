@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const MealType = ({ mealType, setMealType }) => {
   const [mealTypes, setMealTypes] = useState([]);
   
   useEffect(() => {
     // Fetch meal types from your backend API (adjust the endpoint as needed)
-    fetch("http://localhost:3001/api/meal-types")
+    fetch(`${apiUrl}/meal-types`)
       .then((response) => response.json())
       .then((data) => {
         // Assuming your API returns an array of meal types with 'id' and 'name' fields
