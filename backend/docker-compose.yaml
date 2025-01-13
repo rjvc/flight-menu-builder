@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  image: bitnami/postgresql:latest
+  ports:
+    - '5432:5432'
+  environment:
+    - PGHOST=localhost
+    - PGUSER=postgres
+    - PGDATABASE=mbappdb
+    - PGPASSWORD=sa
+    - PGPORT=5432
+    - PGSSL=false
+  volumes:
+    - polls_pg_data:bitnami/postgresql

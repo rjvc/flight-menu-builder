@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../styles/HomePage.css";
+//import "../styles/HomePage.css";
+import "../output.css";
 import AirportInput from "../components/AirportInput";
 import PassengerCount from "../components/PassengerCount";
 import MealPreferences from "../components/MealPreferences";
@@ -12,7 +13,7 @@ import NavBar from "../components/NavBar";
 
 const SuccessMessage = ({ message, onClose }) => (
   <div className="success-message">
-    <p>{message}</p>
+    <label>{message}</label>
     <button onClick={onClose}>Close</button>
   </div>
 );
@@ -201,7 +202,7 @@ const HomePage = () => {
                   </div>
                 )}
               </div>
-            )}
+          )}
         </form>
       )}
       <FooterComp />

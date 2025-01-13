@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar";
-import FooterComp from "./FooterComp";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"; // Import useParams
 import "../styles/HomePage.css";
 
-const MenuView = () => {
-  const { id } = useParams(); // Extract ID from the URL
+const MenuView = ({ menuId: propMenuId, onBack }) => {
+  const { id: urlMenuId } = useParams(); // Extract the ID from URL params
+  const menuId = propMenuId || urlMenuId; // Prefer propMenuId, fallback to urlMenuId
+
   const [menuData, setMenuData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,9 +13,8 @@ const MenuView = () => {
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/menu/${id}`);
+        const response = await fetch(`http://localhost:3001/api/menu/${menuId}`);
         if (!response.ok) {
-          // Handle specific HTTP status codes
           if (response.status === 404) {
             throw new Error("Menu not found");
           }
@@ -31,61 +30,61 @@ const MenuView = () => {
     };
 
     fetchMenuData();
-  }, [id]); // Re-fetch when the ID changes
+  }, [menuId]);
 
-  // Render loading or error messages
-  if (loading) return <div><NavBar/><div className="resMessage"><p className="roboto-light" >L o a d i n g ...</p></div></div>;
-  if (error) return <div><NavBar/> <div className="resMessage"><p className="roboto-light" style={{ color: "red" }}>{error}</p></div></div>;
+  if (loading) {
+    return <div className="resMessage"><p className="roboto-light">L o a d i n g ...</p></div>;
+  }
+
+  if (error) {
+    return <div className="resMessage"><p className="roboto-light" style={{ color: "red" }}>{error}</p></div>;
+  }
 
   return (
-    <>
-      <NavBar />
-      <h1
-        className="roboto-regular"
-        style={{ padding: "1rem", color: "#334257" }}
-      >
+    <div className="homepage-form">
+      <button onClick={onBack} className="backButton roboto-light">
+        ◀ go back
+      </button>
+      <h1 className="roboto-regular" style={{ padding: "1rem", color: "#334257" }}>
         Menu Details
       </h1>
-      <div className="homepage-form">
-        <div
-          className="roboto-thin"
-          style={{
-            "font-size": "1rem",
-            borderRadius: "8px",
-            color: "white",
-            "line-height": "2.5",
-          }}
-        >
-          <p>
-            <strong>Airport:</strong> {menuData.airport}
-          </p>
-          <p>
-            <strong>Passengers:</strong> {menuData.numPassengers}
-          </p>
-          <p>
-            <strong>Crew:</strong> {menuData.numCrew}
-          </p>
-          <p>
-            <strong>Meal Type:</strong> {menuData.mealType}
-          </p>
-          <p>
-            <strong>Selected Meals:</strong> {menuData.selectedMeals.join(", ")}
-          </p>
-          <p>
-            <strong>Dietary Restrictions:</strong>{" "}
-            {menuData.dietaryRestrictions.join(", ")}
-          </p>
-          <p>
-            <strong>Drink Preference:</strong> {menuData.drinkPreference}
-          </p>
-          <p>
-            <strong>Submitted At:</strong>{" "}
-            {new Date(menuData.timestamp).toLocaleString()}
-          </p>
-        </div>
+      <div
+        className="roboto-thin"
+        style={{
+          fontSize: "1rem",
+          borderRadius: "8px",
+          color: "white",
+          lineHeight: "2.5",
+        }}
+      >
+        <p>
+          <strong>Airport:</strong> {menuData.airport || "N/A"}
+        </p>
+        <p>
+          <strong>Passengers:</strong> {menuData.numPassengers || "N/A"}
+        </p>
+        <p>
+          <strong>Crew:</strong> {menuData.numCrew || "N/A"}
+        </p>
+        <p>
+          <strong>Meal Type:</strong> {menuData.mealType || "N/A"}
+        </p>
+        <p>
+          <strong>Selected Meals:</strong> {menuData.selectedMeals?.join(", ") || "N/A"}
+        </p>
+        <p>
+          <strong>Dietary Restrictions:</strong>{" "}
+          {menuData.dietaryRestrictions?.join(", ") || "N/A"}
+        </p>
+        <p>
+          <strong>Drink Preference:</strong> {menuData.drinkPreference || "N/A"}
+        </p>
+        <p>
+          <strong>Submitted At:</strong>{" "}
+          {menuData.timestamp ? new Date(menuData.timestamp).toLocaleString() : "N/A"}
+        </p>
       </div>
-      <FooterComp />
-    </>
+    </div>
   );
 };
 

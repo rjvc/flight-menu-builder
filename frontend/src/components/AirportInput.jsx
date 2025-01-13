@@ -2,7 +2,8 @@
 import React, { useState, useRef } from "react";
 import Select from "react-select";
 import axios from "axios";
-import "../styles/HomePage.css"; // Ensure correct CSS for styling
+//import "../styles/HomePage.css"; // Ensure correct CSS for styling
+import "../output.css";
 
 const AirportInput = ({ airport, setAirport }) => {
   const [options, setOptions] = useState([]);
@@ -65,7 +66,9 @@ const AirportInput = ({ airport, setAirport }) => {
   };
 
   return (
-    <div className="form-group roboto-regular">
+    <>
+    
+    <div className="form-group roboto-regular"> 
       <label>Enter Airport IATA/ICAO Code</label>
       <Select
         id="airport" // This links to the label's `for` attribute
@@ -78,6 +81,8 @@ const AirportInput = ({ airport, setAirport }) => {
         isLoading={loading} // Show loading indicator while fetching
       />
     </div>
+    
+    </>
   );
 };
 

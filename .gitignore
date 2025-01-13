@@ -1,3 +1,5 @@
-/frontend/.env
-/backend/.env
+.env
+ca.pem
+frontend/.env
+backend/.env
 node_modules

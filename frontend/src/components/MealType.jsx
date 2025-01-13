@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 const MealType = ({ mealType, setMealType }) => {
-  const options = [
-    { value: "hot", label: "Hot" },
-    { value: "cold", label: "Cold" },
-    { value: "both", label: "Both" },
-  ];
+  const [mealTypes, setMealTypes] = useState([]);
+  
+  useEffect(() => {
+    // Fetch meal types from your backend API (adjust the endpoint as needed)
+    fetch("http://localhost:3001/api/meal-types")
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming your API returns an array of meal types with 'id' and 'name' fields
+        const options = data.map((mealType) => ({
+          value: mealType.id,
+          label: mealType.name,
+        }));
+        setMealTypes(options);
+      })
+      .catch((error) => console.error("Error fetching meal types:", error));
+  }, []);
 
   return (
     <div className="form-group roboto-regular">
       <label>Do you want hot or cold meals?</label>
       <Select
         id="mealType"
-        value={options.find((option) => option.value === mealType)} // Match selected value
+        value={mealTypes.find((option) => option.value === mealType)} // Match selected value
         onChange={(selectedOption) => setMealType(selectedOption.value)} // Update state with the selected value
-        options={options}
+        options={mealTypes}  // Dynamically populated options
         placeholder="Select"
         isClearable
         className="sel-comp"
