@@ -7,14 +7,16 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json for both frontend and backend
 COPY package*.json ./
 
-# Install dependencies for the backend
+# Install dependencies for both frontend and backend
 RUN npm install
 
 # Copy the backend code
 COPY backend ./backend
 
-# Install dependencies for the frontend
+# Set the working directory to the frontend
 WORKDIR /usr/src/app/frontend
+
+# Install dependencies for the frontend
 RUN npm install
 
 # Build the React frontend app
