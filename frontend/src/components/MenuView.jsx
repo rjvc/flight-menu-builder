@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // Import useParams
 import "../styles/HomePage.css";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const MenuView = ({ menuId: propMenuId, onBack }) => {
   const { id: urlMenuId } = useParams(); // Extract the ID from URL params
   const menuId = propMenuId || urlMenuId; // Prefer propMenuId, fallback to urlMenuId
@@ -13,7 +15,7 @@ const MenuView = ({ menuId: propMenuId, onBack }) => {
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/menu/${menuId}`);
+        const response = await fetch(`${apiUrl}/menu/${menuId}`);
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error("Menu not found");
