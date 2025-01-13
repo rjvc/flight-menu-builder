@@ -8,14 +8,6 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Debugging: Log environment variables
-console.debug('Environment Variables:', {
-    PGHOST: process.env.PGHOST,
-    PGUSER: process.env.PGUSER,
-    PGDATABASE: process.env.PGDATABASE,
-    PGPORT: process.env.PGPORT,
-});
-
 // Read the CA certificate
 let caCertificate;
 try {
