@@ -25,8 +25,8 @@ const pool = new Pool({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
     ssl: {
-        rejectUnauthorized: true,
-        ca: caCertificate,
+        rejectUnauthorized: false
+       // ca: caCertificate,
     },
 });
 
