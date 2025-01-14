@@ -43,7 +43,7 @@ pool.connect((err, client, release) => {
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: 'https://flightmenubuilder.onrender.com', // Allow requests from your frontend
 }));
 
 // Log incoming requests
