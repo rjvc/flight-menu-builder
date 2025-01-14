@@ -15,7 +15,7 @@ const MenuView = ({ menuId: propMenuId, onBack }) => {
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await fetch(`${apiUrl}/menu/${menuId}`);
+        const response = await fetch(`${apiUrl}/api/menu/${menuId}`);
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error("Menu not found");

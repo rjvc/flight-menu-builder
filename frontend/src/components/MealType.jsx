@@ -8,7 +8,7 @@ const MealType = ({ mealType, setMealType }) => {
   
   useEffect(() => {
     // Fetch meal types from your backend API (adjust the endpoint as needed)
-    fetch(`${apiUrl}/meal-types`)
+    fetch(`${apiUrl}/api/meal-types`)
       .then((response) => response.json())
       .then((data) => {
         // Assuming your API returns an array of meal types with 'id' and 'name' fields
