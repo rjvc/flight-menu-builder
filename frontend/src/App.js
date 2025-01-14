@@ -3,6 +3,28 @@ import { createBrowserRouter, RouterProvider, useParams, useNavigate, useLocatio
 import Homepage from "./pages/HomePage";
 import MenuComponent from "./components/Menu"; // Assuming this is your original Menu component
 
+// MenuWithRedirect handles the redirect logic
+const MenuWithRedirect = () => {
+  const { id } = useParams(); // Extract id from URL params
+  const navigate = useNavigate();
+
+  // Log the id when the component mounts
+  useEffect(() => {
+    if (id) {
+      navigate('/menu', { state: { menuId: id } });
+    }
+  }, [id, navigate]);
+
+  return null; // Don't render anything, just handle the redirect
+};
+
+const MenuRoute = () => {
+  const location = useLocation(); // Get the current location
+  const menuId = location.state?.menuId; // Access the id passed via state
+
+  return <MenuComponent menuId={menuId} />; // Pass the menuId as a prop to MenuComponent
+};
+
 // Create the router with the future flag
 const router = createBrowserRouter(
   [
@@ -28,28 +50,6 @@ const router = createBrowserRouter(
 
 const App = () => {
   return <RouterProvider router={router} />;
-};
-
-// MenuWithRedirect handles the redirect logic
-const MenuWithRedirect = () => {
-  const { id } = useParams(); // Extract id from URL params
-  const navigate = useNavigate();
-
-  // Log the id when the component mounts
-  useEffect(() => {
-    if (id) {
-      navigate('/menu', { state: { menuId: id } });
-    }
-  }, [id, navigate]);
-
-  return null; // Don't render anything, just handle the redirect
-};
-
-const MenuRoute = () => {
-  const location = useLocation(); // Get the current location
-  const menuId = location.state?.menuId; // Access the id passed via state
-
-  return <MenuComponent menuId={menuId} />; // Pass the menuId as a prop to MenuComponent
 };
 
 export default App;
