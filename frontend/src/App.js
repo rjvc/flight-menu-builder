@@ -1,18 +1,33 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useParams, useNavigate, useLocation } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useParams, useNavigate, useLocation } from "react-router-dom";
 import Homepage from "./pages/HomePage";
 import MenuComponent from "./components/Menu"; // Assuming this is your original Menu component
 
+// Create the router with the future flag
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Homepage />,
+    },
+    {
+      path: "/menu",
+      element: <MenuRoute />,
+    },
+    {
+      path: "/menu/:id",
+      element: <MenuWithRedirect />,
+    },
+  ],
+  {
+    future: {
+      v7_startTransition: true, // Opt-in to the future flag
+    },
+  }
+);
+
 const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/menu" element={<MenuRoute />} />
-        <Route path="/menu/:id" element={<MenuWithRedirect />} />
-      </Routes>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 };
 
 // MenuWithRedirect handles the redirect logic
@@ -24,7 +39,6 @@ const MenuWithRedirect = () => {
   useEffect(() => {
     if (id) {
       navigate('/menu', { state: { menuId: id } });
-    } else {
     }
   }, [id, navigate]);
 

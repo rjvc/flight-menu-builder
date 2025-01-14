@@ -2,7 +2,6 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  webSocketURL: false,
   target: 'node',
   mode: 'production', // Explicitly set the mode to 'production'
   entry: path.resolve(__dirname, 'src', 'server.js'),  // Ensure this path is resolved correctly
