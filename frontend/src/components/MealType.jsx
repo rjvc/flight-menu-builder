@@ -31,7 +31,14 @@ const MealType = ({ mealType, setMealType }) => {
       <Select
         id="mealType"
         value={mealTypes.find((option) => option.value === mealType)} // Match selected value
-        onChange={(selectedOption) => setMealType(selectedOption.value)} // Update state with the selected value
+        onChange={(selectedOption) => {
+          // Check if selectedOption is null
+          if (selectedOption) {
+            setMealType(selectedOption.value); // Update state with the selected value
+          } else {
+            setMealType(null); // Clear the state if selection is cleared
+          }
+        }} 
         options={mealTypes}  // Dynamically populated options
         placeholder="Select"
         isClearable
