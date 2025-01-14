@@ -40,10 +40,20 @@ pool.connect((err, client, release) => {
     release();
 });
 
-// Middleware to parse JSON request bodies
-app.use(express.json());
+const allowedOrigins = [
+    'https://flightmenubuilder.onrender.com',
+    'http://localhost:3000', // For local development
+];
+
 app.use(cors({
-    origin: 'https://flightmenubuilder.onrender.com', // Allow requests from your frontend
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, origin);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
 }));
 
 // Log incoming requests
