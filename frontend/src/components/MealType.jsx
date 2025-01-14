@@ -6,20 +6,21 @@ const apiUrl = process.env.REACT_APP_API_URL;
 const MealType = ({ mealType, setMealType }) => {
   const [mealTypes, setMealTypes] = useState([]);
   
-  useEffect(() => {
-    // Fetch meal types from your backend API (adjust the endpoint as needed)
-    fetch(`${apiUrl}/api/meal-types`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Assuming your API returns an array of meal types with 'id' and 'name' fields
-        const options = data.map((mealType) => ({
-          value: mealType.id,
-          label: mealType.name,
-        }));
-        setMealTypes(options);
-      })
-      .catch((error) => console.error("Error fetching meal types:", error));
-  }, []);
+  fetch(`${apiUrl}/api/meal-types`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const options = data.map((mealType) => ({
+        value: mealType.id,
+        label: mealType.name,
+      }));
+      setMealTypes(options);
+    })
+    .catch((error) => console.error("Error fetching meal types:", error));
 
   return (
     <div className="form-group roboto-regular">
